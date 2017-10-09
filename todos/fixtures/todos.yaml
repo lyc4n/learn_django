@@ -1,0 +1,27 @@
+- model: todos.todo
+  pk: 1
+  fields:
+    title: Write some Ruby Code
+    description: This is awesome
+    due_date: 2017-10-10
+
+- model: todos.todo
+  pk: 2
+  fields:
+    title: Write some Python Code
+    description: This is snakelike
+    due_date: 2017-10-10
+
+- model: todos.todo
+  pk: 3
+  fields:
+    title: Write some C Code
+    description: Will dive deep in the C world
+    due_date: 2017-10-10
+
+- model: todos.todo
+  pk: 4
+  fields:
+    title: Write some JS Code
+    description: Functions functions functions everywhere
+    due_date: 2017-10-10
