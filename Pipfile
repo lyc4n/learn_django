@@ -4,10 +4,13 @@ verify_ssl = true
 name = "pypi"
 
 [dev-packages]
+ipython = "*"
 
 [packages]
+
 pyyaml = "*"
 django = "*"
+ipython = "*"
 
 
 [requires]
