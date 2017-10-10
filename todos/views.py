@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from todos.models import Todo
 
 
 def index(request):
-    return HttpResponse("Will list todos here")
+    todos = Todo.objects.all()
+    context = {'todos': todos}
+    return render(request, 'index.html', context)
