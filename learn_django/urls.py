@@ -18,6 +18,8 @@ from django.contrib import admin
 from todos import views
 
 urlpatterns = [
-    url(r'^$', views.index, name='index'),
+    url(r'^$', views.index, name='todos_index'),
+    url(r'^finish_todo/(\d+)/$', views.finish, name='todo_finish'),
+    url(r'^unfinish_todo/(\d+)/$', views.unfinish, name='todo_unfinish'),
     url(r'^admin/', admin.site.urls),
 ]

@@ -3,7 +3,25 @@
 <h1>Your TODOs</h1>
   <ul>
     {% for todo in todos %}
-      <li>{{ todo.title }}</li>
+      <li>
+        <article>
+          {% if todo.is_done %}
+            <header><strike>{{ todo.title }}</strike></header>
+          {% else %}
+            <header>{{ todo.title }}</header>
+          {% endif %}
+          <summary>
+            {{ todo.description }}
+          </summary>
+          <section>
+            {% if todo.is_done %}
+              <a href="{% url 'todo_unfinish' todo.id %}">Mark as NOT done</a>
+            {% else %}
+              <a href="{% url 'todo_finish' todo.id %}">Mark as DONE</a>
+            {% endif %}
+          </section>
+        </article>
+      </li>
     {% empty %}
       <li>I'm sad! There's nothing todo :(</li>
     {% endfor %}
