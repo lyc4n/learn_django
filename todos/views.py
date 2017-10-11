@@ -9,14 +9,16 @@ def index(request):
     context = {'todos': todos}
     return render(request, 'index.html', context)
 
-def finish(request, todo_id):
-    todo         = Todo.objects.filter(id=todo_id).first()
-    todo.is_done = True
-    todo.save()
+def finish(request, id):
+    todo = _get_todo(id)
+    todo.update(is_done=True)
     return redirect('todos_index')
 
-def unfinish(request, todo_id):
-    todo         = Todo.objects.filter(id=todo_id).first()
-    todo.is_done = False
-    todo.save()
+def unfinish(request, id):
+    todo = _get_todo(id)
+    todo.update(is_done=False)
     return redirect('todos_index')
+
+def _get_todo(id):
+    todo = Todo.objects.filter(id=id)
+    return todo
