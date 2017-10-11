@@ -1,29 +1,46 @@
 {% extends 'base.html' %}
 {% block content %}
-<h1>Your TODOs</h1>
-  <ul>
-    {% for todo in todos %}
-      <li>
-        <article>
-          {% if todo.is_done %}
-            <header><strike>{{ todo.title }}</strike></header>
-          {% else %}
-            <header>{{ todo.title }}</header>
-          {% endif %}
-          <summary>
-            {{ todo.description }}
-          </summary>
-          <section>
+  <div class='col-xs-12'>
+    <h1>
+      Your Todos
+      <small class='pull-right'>
+        {% now 'jS F Y' %}
+      </small>
+    </h1>
+    <hr>
+  </div>
+
+  <div class='col-xs-12'>
+    <ul class="list-unstyled">
+      {% for todo in todos %}
+        <li>
+          <article>
             {% if todo.is_done %}
-              <a href="{% url 'todo_unfinish' todo.id %}">Mark as NOT done</a>
+              <header><strike>{{ todo.title }}</strike></header>
             {% else %}
-              <a href="{% url 'todo_finish' todo.id %}">Mark as DONE</a>
+              <header>{{ todo.title }}</header>
             {% endif %}
-          </section>
-        </article>
-      </li>
-    {% empty %}
-      <li>I'm sad! There's nothing todo :(</li>
-    {% endfor %}
-  </ul>
+            <summary>
+              {{ todo.description }}
+            </summary>
+            <section>
+              {% if todo.is_done %}
+                <a href="{% url 'todo_unfinish' todo.id %}">Mark as NOT done</a>
+              {% else %}
+                <a href="{% url 'todo_finish' todo.id %}">Mark as DONE</a>
+              {% endif %}
+            </section>
+          </article>
+        </li>
+      {% empty %}
+        <li>I'm sad! There's nothing todo :(</li>
+      {% endfor %}
+    </ul>
+    <br>
+    <br>
+    <br>
+    <div class='text-left'>
+      <a  class='btn btn-primary' href='#'>Add a new todo</a>
+    </div>
+  </div>
 {% endblock %}
