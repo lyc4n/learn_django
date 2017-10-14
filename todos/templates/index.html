@@ -11,37 +11,33 @@
     <hr>
   </div>
 
-  <div class='col-xs-12'>
-    <ul class="list-unstyled">
-      {% for todo in todos %}
-        <li>
-          <article>
-            {% if todo.is_done %}
-              <header><strike>{{ todo.title }}</strike></header>
-            {% else %}
-              <header>{{ todo.title }}</header>
-            {% endif %}
-            <summary>
-              {{ todo.description }}
-            </summary>
-            <section>
-              {% if todo.is_done %}
-                <a href="{% url 'todo_unfinish' todo.id %}">Mark as NOT done</a>
-              {% else %}
-                <a href="{% url 'todo_finish' todo.id %}">Mark as DONE</a>
-              {% endif %}
-            </section>
-          </article>
-        </li>
-      {% empty %}
-        <li>I'm sad! There's nothing todo :(</li>
-      {% endfor %}
-    </ul>
-    <br>
-    <br>
-    <br>
-    <div class='text-left'>
-      <button type='button' class='btn btn-primary btn-lg' data-toggle='modal' data-target='#new-todo-modal'>Add new todo</button>
+  <div class='col-xs-12 col-sm-6'>
+    <h3>Unfinished</h3>
+    <div class='well'>
+      <ul class='list-unstyled'>
+        {% for todo in unfinished_todos %}
+          {% include '_todo.html' with todo=todo %}
+        {% empty %}
+          <li>I'm sad! There's nothing todo :(</li>
+        {% endfor %}
+      </ul>
     </div>
+  </div>
+
+  <div class='col-xs-12 col-sm-6'>
+    <h3>Finished</h3>
+    <div class='well'>
+      <ul class='list-unstyled'>
+        {% for todo in finished_todos %}
+          {% include '_todo.html' with todo=todo %}
+        {% empty %}
+          <li>You have not finished any task today...</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+  <div class='col-xs-12 text-left'>
+    <button type='button' class='btn btn-primary btn-md' data-toggle='modal' data-target='#new-todo-modal'>Add new todo</button>
   </div>
 {% endblock %}

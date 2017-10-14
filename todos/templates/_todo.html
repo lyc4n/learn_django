@@ -1,0 +1,21 @@
+
+<li>
+  <article>
+    {% if todo.is_done %}
+    <header><strike>{{ todo.title }}</strike></header>
+    {% else %}
+    <header>{{ todo.title }}</header>
+    {% endif %}
+    <summary>
+    {{ todo.description }}
+    </summary>
+    <section>
+      {% if todo.is_done %}
+        <a class='btn btn-xs btn-info' href="{% url 'todo_unfinish' todo.id %}">Mark as NOT done</a>
+      {% else %}
+        <a class='btn btn-xs btn-success' href="{% url 'todo_finish' todo.id %}">Mark as DONE</a>
+      {% endif %}
+        <a class='btn btn-xs btn-warning' href="{% url 'todo_destroy' todo.id %}">Delete</a>
+    </section>
+  </article>
+</li>
