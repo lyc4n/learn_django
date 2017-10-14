@@ -17,7 +17,7 @@
   fields:
     title: Write some C Code
     description: Will dive deep in the C world
-    due_date: 2017-10-10
+    due_date: 2017-10-04
 
 - model: todos.todo
   pk: 4

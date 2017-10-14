@@ -16,9 +16,12 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from django.views.generic import RedirectView
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     url(r'^$', RedirectView.as_view(pattern_name='todos_index', permanent=False)),
     url(r'^admin/', admin.site.urls),
     url(r'^todos/', include('todos.urls')),
+    url(r'^login/$', auth_views.login,  name='new_session'),
+    url(r'^logout/$', auth_views.logout, {'next_page': '/login'}, name='destroy_session')
 ]

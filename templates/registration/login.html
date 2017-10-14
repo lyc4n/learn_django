@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+  <meta charset='UTF-8'>
+  <title>Learn Django - Login</title>
+</head>
+<body>
+  <h1>Learn Django - Login</h1>
+
+  <form action='' method='post'>
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type='submit' class='submit' value='Login'>
+  </form>
+</body>
+</html>
